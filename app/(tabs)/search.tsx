@@ -3,7 +3,7 @@ import { images } from '@/constants/images'
 import { fetchMovies } from '@/services/api'
 import useFetch from '@/services/useFetch'
 import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, FlatList, Image, Text, View } from 'react-native'
+import { ActivityIndicator, FlatList, Image, Keyboard, Text, View } from 'react-native'
 import MovieCard from '../components/MovieCard'
 import SearchBar from '../components/SearchBar'
 
@@ -41,6 +41,11 @@ const Search = () => {
         keyExtractor={(item) => item?.id.toString()}
         className='px-5 '
         numColumns={3}
+        onScroll={({ nativeEvent }) => {
+          if (nativeEvent.contentOffset.y > 0) {
+            Keyboard.dismiss()
+          }
+        }}
         columnWrapperStyle={{
           justifyContent: 'center',
           gap: 16,
@@ -57,6 +62,7 @@ const Search = () => {
                 placeholder='Search for movies'
                 value={searchQuery}
                 onChangeText={(text: string) => setSearchQuery(text)}
+                autoFocus={true}
               />
             </View>
             {loading && (

@@ -27,6 +27,7 @@ export default function Index() {
         className="flex-1 px-5"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ minHeight: "100%", paddingBottom: 100 }}
+
       >
 
         {moviesLoading ? (
@@ -40,6 +41,7 @@ export default function Index() {
                 router.push("/search");
               }}
               placeholder="Search for movies"
+              autoFocus={false}
             />
 
             <>
