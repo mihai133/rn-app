@@ -33,7 +33,7 @@ console.log(result)
     }
   }, []);
 
-  return { data, loading, error, fetchData, reset };
+  return { data, loading, error, refetch: fetchData, reset };
 };
 
 export default useFetch
