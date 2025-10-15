@@ -55,3 +55,22 @@ export const updateSearchCount = async (query:string, movie: Movie) => {
 // if. no document is found => new search term => create a new document
 
 }
+
+export const getTrendingMovies = async (): Promise<TrendingMovie[] | undefined> => {
+  try {
+    const result = await tablesDB.listRows({
+      databaseId: DATABASE_ID,
+      tableId: DB_NAME,
+      queries: [
+        Query.limit(5),
+        Query.orderDesc('count'),
+      ]
+    })
+  
+    return result?.rows as unknown as TrendingMovie[]
+
+  } catch (error) {
+    console.log(error)
+    return undefined;
+  }
+}

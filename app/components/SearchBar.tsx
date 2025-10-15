@@ -7,7 +7,7 @@ interface Props {
   placeholder: string;
   value?: string;
   onChangeText?: (text: string) => void;
-  autoFocus: boolean
+  autoFocus?: boolean
 }
 
 const SearchBar = ({ onPress, placeholder, value, onChangeText, autoFocus }: Props) => {
