@@ -2,8 +2,21 @@ import { Stack } from "expo-router";
 import './globals.css';
 
 export default function RootLayout() {
-  return <Stack >
-    <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-    <Stack.Screen name="movie/[id]" options={{ presentation: 'modal', title: 'Movie Details' }} />
-  </Stack>;
+  return (
+    <>
+
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen
+          name="(tabs)"
+        />
+        <Stack.Screen
+          name="movie/[id]"
+        />
+      </Stack>
+    </>
+  );
 }
